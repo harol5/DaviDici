@@ -1,0 +1,29 @@
+#request-support-from{ 
+    display: flex; 
+    flex-direction: column;
+    gap: 1em;
+}
+
+#request-support-from label::after{ 
+    content: " *(required)";
+}
+
+#join-room-button{
+    color: #D1AA68;
+    border: 1px solid #D1AA68;
+}
+#join-room-button:hover{
+    color: #D1AA68 !important;
+    border: 1px solid #D1AA68 !important;
+    background-color: #F8F8FF !important;
+}
+
+@media (max-width: 600px){
+    .controllers-container > .e-con-inner{
+        justify-content: space-around !important;
+    }
+
+    .controller{
+        width: 16% !important;
+    }
+}

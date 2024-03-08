@@ -1,0 +1,36 @@
+/*=========button for toggle the collection menu===========*/
+.toggle-menu{
+	display: none !important;
+}
+
+/*size of each button*/
+.menu-container-v2 .e-child{
+	flex-basis: 15% !important;
+	flex-grow: 1 !important;
+}
+/*center text*/
+.menu-container-v2 .e-child .e-con-inner{
+	justify-content: center;
+}
+
+@media (max-width: 800px){
+	/*---collection menu-----*/
+
+	.menu-price-list-container{
+		display: none;
+	}
+	.menu-active{
+		display: block;
+	}
+	
+	.toggle-menu{
+		display: block !important;
+	}
+	
+	.menu-container-v2 .e-child{
+		flex-basis: 30% !important;
+		flex-grow: 1 !important;
+	}
+}
+
+
