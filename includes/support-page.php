@@ -27,7 +27,7 @@ function send_notification($request){
 		return new WP_Error('missing_data', 'Missing request data.', array('status' => 400));
 	}
 
-    $to = array('harole@davidici.com','3219483992@tmomail.net','9178036768@txt.att.net','3477319974@txt.att.net','assistance@davidici.com');
+    $to = array($_SERVER['HAROL_EMAIL'],$_SERVER['HAROL_PHONE'],$_SERVER['ANA_PHONE'],$_SERVER['DAVID_PHONE'],$_SERVER['FERNANDA_EMAIL']);
     $subject = 'support requested';
     $message = "TEST: $customer_name from $customer_company is waiting on the support room";
     wp_mail($to,$subject,$message);

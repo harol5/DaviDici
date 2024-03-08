@@ -26,7 +26,7 @@ function get_order_status($request){
 
     $args = array(
         'headers' => array(
-            'X-API-KEY' => '1855ce84-0da7-4c82-af56-50495c78e41c'
+            'X-API-KEY' => $_SERVER['TRACK_POD_API_KEY']
         )
     );
 

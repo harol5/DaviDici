@@ -50,15 +50,14 @@
     text-align: center;
 }
 /*Main title and wrapper*/
-.key-value-wrapper.products-container h2,div{
-    flex-basis: 100%;
-}
 /*title*/
 .key-value-wrapper.products-container h2{
+    flex-basis: 100%;
     font-size: 1.8em !important;
 }
 /*wrappers*/
 .key-value-wrapper.products-container div{
+    flex-basis: 100%;
     background-color: #d1ab631c;
     margin: 1em 0;
     padding: 1em 0;
