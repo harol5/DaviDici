@@ -32,7 +32,7 @@ To accomplish this, I used the same events that JetSmartFilters provide and to d
 listings need to be hiden or display, I used a queue, an array and an object to keep track of all
 the changes that happen when user is interacting with the filters.
 
-**Shopping Cart (In Developement)**
+**Shopping Cart**
 Im currently using a complete custom approach to develop this feature. it ustilizes a custom
 API endpoint that fetch the data of the selected product and the state of the application is 
 managed by classes and local storage.

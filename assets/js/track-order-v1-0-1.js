@@ -7,13 +7,14 @@ function updateStatus(order){
         return;
     }
 
-    const {Address,ArrivedDate,Client,ContactName,DepartedDate,GoodsList,Status} = order;
+    const {Address,ArrivedDate,Client,ContactName,DepartedDate,GoodsList,HasPhoto,Photos,Status} = order;
+
     const renderProducts = () => {
         let products = "";
         for(const good of GoodsList){
             products += `
                 <div>
-                    <h3>Name:</h3>
+                    <h3>Product Description:</h3>
                     <span>${good.GoodsName}</span>
                     <h3>Qty:</h3>
                     <span>${good.Quantity}</span>
@@ -21,6 +22,16 @@ function updateStatus(order){
             `;
         }
         return products;
+    }
+
+    const renderPictures = () => {
+        if(!HasPhoto) return "<p>Not pictures at this moment</p>"
+
+        let pictures = "";
+        for(const picture of Photos){
+            pictures += `<img src=${picture} />`;
+        }
+        return pictures;
     }
 
     const formatDay = (date) => {
@@ -58,6 +69,12 @@ function updateStatus(order){
             <h2>Products</h2>
             ${renderProducts()}
         </div>
+        <div class="pictures-container">
+            <h2>Pictures</h2>
+            <div>
+            ${renderPictures()}
+            </div>
+        </div>
     `;
 }
 
@@ -73,6 +90,7 @@ checkOrderForm.addEventListener("submit", async (e) => {
         },
         success: function(res) {
             const order = JSON.parse(res);
+            console.log(order);
             updateStatus(order);
         },
         error: function(xhr, status, error) {
