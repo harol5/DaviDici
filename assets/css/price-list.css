@@ -1,7 +1,13 @@
 /*---------------------------------------------CSS for price list---------------------------*/
 
-.message{
+.messageContainer{
 	text-align: center;
+}
+.messageContainer h2{
+	font-size: 1.5em !important;
+}
+.filter-icon{
+	width: 80px;
 }
 
 

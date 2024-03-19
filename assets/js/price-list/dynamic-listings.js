@@ -12,12 +12,15 @@ export default class DynamicListings {
 		if(DynamicListings.isFirstRender){
 			const mainContainer = document.querySelector("#listing-templates-container");
 
-			const message = document.createElement("h1");
-			message.classList.add("message");
-			message.innerText = "<-- Please use the filters to see products available";
-			mainContainer.appendChild(message);
+			const messageContainer = document.createElement("div");
+			messageContainer.classList.add("messageContainer");
+			messageContainer.innerHTML = `
+				<img src="https://www.davidici.com/wp-content/uploads/2024/03/filter-svgrepo-com.svg" class="filter-icon" alt="filter icon"/>
+				<h2>Please use the filters to see products available</h2>
+			`;
 
-			DynamicListings.messageRef = message;	
+			mainContainer.appendChild(messageContainer);
+			DynamicListings.messageRef = messageContainer;	
 			DynamicListings.isFirstRender = false;
 		}
 

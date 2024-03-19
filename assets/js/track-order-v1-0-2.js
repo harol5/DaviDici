@@ -18,6 +18,7 @@ function updateStatus(order) {
     HasSignaturePhoto,
     Phone,
     Photos,
+    ReportUrl,
     SignaturePhotos,
     Status,
   } = order;
@@ -38,7 +39,7 @@ function updateStatus(order) {
   };
 
   const renderPictures = () => {
-    if (!HasPhoto && !HasSignaturePhoto)
+    if (!HasPhoto)
       return "<p>Not pictures at this moment</p>";
 
     let pictures = "";
@@ -46,8 +47,18 @@ function updateStatus(order) {
       pictures += `<img src=${picture} />`;
     }
 
-    pictures += `<img src=${SignaturePhotos[0]} />`;
+    return pictures;
+  };
 
+  const renderSignature = () => {
+    if (!HasSignaturePhoto)
+      return "<p>Not signature at this moment</p>";
+
+    let pictures = `
+      <img src=${SignaturePhotos[0]} />
+      <a href=${ReportUrl}>Download E-pod</a>
+    `;
+    
     return pictures;
   };
 
@@ -94,6 +105,12 @@ function updateStatus(order) {
             <h2>Pictures</h2>
             <div>
             ${renderPictures()}
+            </div>
+        </div>
+        <div class="signature-container">
+            <h2>Signature</h2>
+            <div>
+            ${renderSignature()}
             </div>
         </div>
     `;

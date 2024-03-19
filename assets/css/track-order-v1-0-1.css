@@ -22,7 +22,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1em;
-    margin: 0 0 5em;
 }
 
 .key-value-wrapper{
@@ -93,6 +92,29 @@
 }
 .pictures-container img{
     width: 25%;
+}
+
+
+
+.signature-container{
+    flex-basis: 100%;
+}
+.signature-container h2{
+    font-size: 1.8em !important;
+    color: #D1AA68;
+    text-align: center;
+}
+.signature-container div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+}
+.signature-container img{
+    width: 15%;
+}
+.signature-container a {
+    font-size: 1.2em !important;
 }
 
 
