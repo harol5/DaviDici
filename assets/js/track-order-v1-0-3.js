@@ -128,7 +128,6 @@ checkOrderForm.addEventListener("submit", async (e) => {
     },
     success: function (res) {
       const order = JSON.parse(res);
-      console.log(order);
       updateStatus(order);
     },
     error: function (xhr, status, error) {

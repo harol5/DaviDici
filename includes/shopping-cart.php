@@ -1,7 +1,7 @@
 <?php
 function my_files(){
 	if( is_archive() ){
-		wp_enqueue_script( 'shopping_cart_js', get_theme_file_uri( '/assets/js/price-list/shopping-cart.js' ),array(),'1.0.0',array('in_footer' => true,
+		wp_enqueue_script( 'shopping_cart_js', get_theme_file_uri( '/assets/js/price-list/shopping-cart-v-1-0-1.js' ),array(),'1.0.0',array('in_footer' => true,
 		'strategy'  => 'defer',));
 		wp_enqueue_style('shopping_cart_css', get_theme_file_uri('/assets/css/shopping-cart.css'));
 	}
@@ -32,6 +32,7 @@ function get_product_info($request){
 		$product_size = $product-> get_attribute( 'size' );
         $crr_total =  $product_price * $quantity;
 		$sink_position = $product-> get_attribute( 'sink-position' );
+		$stock_status = $product-> get_attribute( 'stock-status' );
 
 		$product_categories_ids = $product->get_category_ids();
 		$categories = array();
@@ -52,6 +53,7 @@ function get_product_info($request){
             "unitPrice" => $product_price,
             "total" => $crr_total,
 			"isOnShoppingCart" => true,
+			"stockStatus" => $stock_status,
 		);
 
 		return rest_ensure_response($product_info_list);

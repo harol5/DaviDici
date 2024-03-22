@@ -37,7 +37,7 @@ class ShoppingCartDOM {
       localStorage.setItem("shopping-cart",JSON.stringify({products,grandTotal,suggestedWashbasinSize,orderNowUrl}));
     };
   
-    static addProduct(id,name,qty,sku,total,unitPrice){
+    static addProduct(id,name,qty,sku,total,unitPrice,stockStatus){
       const productContainer = document.createElement("div");
       productContainer.id = `product-container-${id}`;
       productContainer.classList.add("header-product-container")
@@ -48,6 +48,7 @@ class ShoppingCartDOM {
           <h2 class="other-header">Price</h2>
           <h2 class="other-header">Qty</h2>
           <h2 class="other-header">Total</h2>
+          <h2 class="other-header">Stock</h2>
           <h2 class="other-header no-print"></h2>
         </div>
         <div class="product-container">
@@ -65,6 +66,9 @@ class ShoppingCartDOM {
           </div>
           <div class="product-total-container">
             <span class="total-container">${USDollar.format(total)}</span>
+          </div>
+          <div class="product-total-container">
+            <span class="total-container">${stockStatus}</span>
           </div>
           <div class="product-remove-button-container no-print">
             <button class="remove-button" data-product-id="${id}">remove</button>
@@ -93,7 +97,7 @@ class ShoppingCartDOM {
     }
   
     static updateShoppingCartContainer(){
-      const {id,name,qty,sku,total,unitPrice,isOnShoppingCart} = this.lastProductUpdated;
+      const {id,name,qty,sku,total,unitPrice,isOnShoppingCart,stockStatus} = this.lastProductUpdated;
       const productDomRef = ShoppingCartDOM.productsRenderedRef[id];
   
       if(productDomRef && isOnShoppingCart){
@@ -103,7 +107,7 @@ class ShoppingCartDOM {
         ShoppingCartDOM.removeProduct(productDomRef,id);
       }
       else{
-        ShoppingCartDOM.addProduct(id,name,qty,sku,total,unitPrice);
+        ShoppingCartDOM.addProduct(id,name,qty,sku,total,unitPrice,stockStatus);
       }
   
       ShoppingCartDOM.grandTotalRef.innerText = `${USDollar.format(shoppingCart.getGrandTotal())}`;
@@ -177,8 +181,8 @@ class ShoppingCartDOM {
       const products = shoppingCart.getProducts();
       if(products.length > 0){
         products.forEach(product => {
-          const {id,name,qty,sku,total,unitPrice} = product;
-          ShoppingCartDOM.addProduct(id,name,qty,sku,total,unitPrice);
+          const {id,name,qty,sku,total,unitPrice,stockStatus} = product;
+          ShoppingCartDOM.addProduct(id,name,qty,sku,total,unitPrice,stockStatus);
         });
       }
     };
@@ -266,7 +270,6 @@ class ShoppingCart {
 
     this.#baseUrl = "https://davidici.datamark.live/?app=Bath%20Vanities&SKU=";
     let allSkuAndQty = "";
-    console.log("update url func");
     for(const product of this.#products){
       const skuAndQty = `${product.sku}--${product.qty}~`;
       allSkuAndQty += skuAndQty;
@@ -280,8 +283,6 @@ class ShoppingCart {
 
     //updates # of vanities or side unit. (for cal size of suggested washbasin).
     const isVanityOrSideUnit = product.categories.find(cat => cat === "vanities price list" || cat === "Side Units price list");
-    console.log("update product");
-    console.log("is vanity or side unit;", isVanityOrSideUnit);
     if(isVanityOrSideUnit){
       let diff = quantity - product.qty;
       if(diff === -1){

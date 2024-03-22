@@ -4,6 +4,7 @@ export default class DynamicListings {
 	static currentFilteredListings = [];
 	static NumOfActiveListingFilters = {};
 	static isFirstRender = true;
+	static currentCollection = {name:"",isFirstRender:true};
 	static messageRef;
 
 	static onFirstRender(event,xhr, settings){
@@ -86,7 +87,7 @@ export default class DynamicListings {
 			sizeFilter.checked = true;
 			sizeFilter.dispatchEvent(e);
 			
-			
+			DynamicListings.currentCollection.name = "washbasins";
 		}
 	}
 
@@ -126,6 +127,13 @@ export default class DynamicListings {
 		//-------------listing----------------
 		domRef.style.display = "";
 		loadingSpinnerDomRef.style.display = "none";
+
+		//adds show filter message.
+		if(DynamicListings.currentCollection.name === "washbasins" && DynamicListings.currentCollection.isFirstRender){
+			domRef.style.display = "none";
+			DynamicListings.messageRef.style.display = "";
+			DynamicListings.currentCollection.isFirstRender = false;
+		}
 		
 		//---change order of container
 		if(DynamicListings.resetedFiltersQueue.length !== 0){
