@@ -92,11 +92,18 @@
 	.title-menu-container{
 		z-index: 10 !important;
 	}
+
+	/*styling "show filter" button*/
 	.toggle-filters{
 		display: block;
 		position: fixed !important;
 		bottom: 110px;
 		right: 0;
+	}
+	.toggle-filters .elementor-button{
+		border-radius: 0% !important;
+		font-size: 10px !important;
+		padding: 8px 15px !important;
 	}
 }
 

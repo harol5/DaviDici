@@ -1,9 +1,9 @@
 <?php
 //------------------------------------------------------
 function track_order_scripts(){
-    wp_enqueue_script( 'track-order-js', get_theme_file_uri( '/assets/js/track-order-v1-0-3.js' ),array(),'1.0.0',array('in_footer' => true,
+    wp_enqueue_script( 'track-order-js', get_theme_file_uri( '/assets/js/track-order-v1-0-4.js' ),array(),'1.0.0',array('in_footer' => true,
 	'strategy'  => 'defer',));
-    wp_enqueue_style('track_order_css', get_theme_file_uri('/assets/css/track-order-v1-0-2.css'));
+    wp_enqueue_style('track_order_css', get_theme_file_uri('/assets/css/track-order-v1-0-3.css'));
 }
 add_action('wp_enqueue_scripts', 'track_order_scripts');
 

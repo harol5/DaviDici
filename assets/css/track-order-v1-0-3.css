@@ -55,7 +55,7 @@
     font-size: 1.8em !important;
 }
 /*wrappers*/
-.key-value-wrapper.products-container div{
+.key-value-wrapper.products-container > div{
     flex-basis: 100%;
     background-color: #d1ab631c;
     margin: 1em 0;
@@ -78,6 +78,9 @@
     border-bottom: 1px solid black;
     margin: 1em 2em;
 }
+.pictures-container.damaged-product{
+    border-bottom: none;
+}
 .pictures-container h2{
     flex-basis: 100%;
     font-size: 1.8em !important;
@@ -99,6 +102,7 @@
 
 .signature-container{
     flex-basis: 100%;
+    margin: 1em 2em;
 }
 .signature-container h2{
     font-size: 1.8em !important;

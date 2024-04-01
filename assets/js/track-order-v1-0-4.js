@@ -26,14 +26,37 @@ function updateStatus(order) {
   const renderProducts = () => {
     let products = "";
     for (const good of GoodsList) {
-      products += `
+      if(good.HasPhoto){
+        let pictures = "";
+        for (const picture of good.Photos) {
+          pictures += `<img src=${picture} />`;
+        }
+
+        products += `
+          <div>
+              <h3>Product Description:</h3>
+              <span>${good.GoodsName}</span>
+              <h3>Qty:</h3>
+              <span>${good.Quantity}</span>
+              <h3>Reject Reason:</h3>
+              <span>${good.RejectReason}</span>
+              <div class="pictures-container damaged-product">
                 <div>
-                    <h3>Product Description:</h3>
-                    <span>${good.GoodsName}</span>
-                    <h3>Qty:</h3>
-                    <span>${good.Quantity}</span>
+                  ${pictures}
                 </div>
-            `;
+              </div>
+          </div>
+        `;
+      }else{
+        products += `
+          <div>
+              <h3>Product Description:</h3>
+              <span>${good.GoodsName}</span>
+              <h3>Qty:</h3>
+              <span>${good.Quantity}</span>
+          </div>
+        `;
+      }
     }
     return products;
   };
