@@ -4,7 +4,7 @@ function enqueue_parent_styles() {
 
 	if( is_archive() ){
 		wp_enqueue_style('price_list_css', get_theme_file_uri('/assets/css/price-list.css'));
-		wp_enqueue_script( 'price_list_main_js', get_theme_file_uri( '/assets/js/price-list/main-v1.js' ),array(),'1.0.0',array('in_footer' => true,
+		wp_enqueue_script( 'price_list_main_js', get_theme_file_uri( '/assets/js/price-list/main-v1-0-4.js' ),array(),'1.0.0',array('in_footer' => true,
 		'strategy'  => 'defer',));
 	}
 
@@ -39,6 +39,21 @@ include(get_theme_file_path( "/includes/express-program.php" ));
 include(get_theme_file_path( "/includes/shopping-cart.php" ));
 include(get_theme_file_path( "/includes/track-order.php" ));
 include(get_theme_file_path( "/includes/support-page.php" ));
+include(get_theme_file_path( "/includes/foxpro-testing-api.php" ));
+include(get_theme_file_path( "/includes/logger.php" ));
+
+// global $wp;
+// write_log( add_query_arg( $wp->query_vars, home_url( $wp->request ) ) );
+// write_log( add_query_arg( $wp->query_vars, home_url( $wp->request ) ) );
+
+// $uploads  = wp_upload_dir( null, false );
+// $logs_dir = $uploads['basedir'] . '/davidici-custom-logs';
+
+// if ( ! is_dir( $logs_dir ) ) {
+//     mkdir( $logs_dir, 0755, true );
+// }
+
+// $file = fopen( $logs_dir . '/' . 'log.log', 'w' );
 
 
 

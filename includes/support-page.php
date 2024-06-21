@@ -3,9 +3,9 @@ function support_scripts(){
     //scripts for media sharing(video/voice/screen);
 	wp_enqueue_script( 'metered-source-js', 'https://cdn.metered.ca/sdk/video/1.4.6/sdk.min.js',array(),'1.0.0',array('in_footer' => true,
 	'strategy'  => 'defer',));
-	wp_enqueue_script( 'support-js', get_theme_file_uri( '/assets/js/support-page.js' ),array(),'1.0.0',array('in_footer' => true,
+	wp_enqueue_script( 'support-js', get_theme_file_uri( '/assets/js/support-page-v1-0-1.js' ),array(),'1.0.0',array('in_footer' => true,
 	'strategy'  => 'defer',));
-    wp_enqueue_style('support_page_css', get_theme_file_uri('/assets/css/support-page.css'));
+    wp_enqueue_style('support_page_css', get_theme_file_uri('/assets/css/support-page-v1-0-1.css'));
 }
 add_action('wp_enqueue_scripts', 'support_scripts');
 
